@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xt0-gf-PZe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Control-->
+        <scene sceneID="lfV-f6-uVZ">
+            <objects>
+                <viewController id="d9K-Hb-KZQ" customClass="ControlsViewController" customModule="Arm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k8B-ze-8Ii">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sAx-Zo-v7L"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Control" image="Icon-Robot" id="35n-8m-13T"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BsW-5U-xkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="197"/>
+        </scene>
+        <!--Programs-->
+        <scene sceneID="cfI-xp-PGp">
+            <objects>
+                <viewController id="xt9-NL-eUQ" customClass="ProgramsViewController" customModule="Arm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EtZ-gk-ZiH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JV5-R9-lD1"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Programs" image="Icon-Source" id="ydG-Yx-UDd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S5M-lo-vJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="-467"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="22p-Vn-cqP">
+            <objects>
+                <tabBarController id="xt0-gf-PZe" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dH2-H2-fpk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="xt9-NL-eUQ" kind="relationship" relationship="viewControllers" id="hr0-57-vN3"/>
+                        <segue destination="d9K-Hb-KZQ" kind="relationship" relationship="viewControllers" id="8Mw-Wd-Jyg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHW-gC-Ied" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-322" y="-135"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon-Robot" width="32" height="32"/>
+        <image name="Icon-Source" width="32" height="32"/>
+    </resources>
+</document>
