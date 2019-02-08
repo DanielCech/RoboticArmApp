@@ -8,14 +8,17 @@
 
 import UIKit
 
-class ProgramsViewController: UIViewController {
+class ProgramsViewController: DCTableSupportedViewController {
 
+    @IBOutlet weak var _tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
 
         tabBarItem.selectedImage = UIImage(named: "Icon-Source")!.withRenderingMode(.alwaysOriginal)
+        
+        _initTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,14 +27,36 @@ class ProgramsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    ////////////////////////////////////////////////////////////////
+    // MARK: - Table View Management
+    
+    private func _initTableView() {
+        do {
+            try registerTableView(_tableView)
+        }
+        catch {
+            print("Registration error")
+        }
+        
+        _tableView.registerCellNib(TextFieldFormCell.self)
+        _tableView.registerCellNib(DynamicTextCell.self)
+        
+        _tableView.rowHeight = UITableViewAutomaticDimension
+        _tableView.estimatedRowHeight = 70
+        
+        createDataSourceForTable(_tableView)
+        _tableView.reloadData()
     }
-    */
 
+    
+    func createDataSourceForTable(_ tableView: UITableView) {
+        super.createDataSourceForTable(tableView)
+        
+        let sectionDescription = SectionDescription(
+            sectionID: 0,
+            headerHeight: { _, _ in 0.01 },
+            footerHeight: { _, _ in 0.01 }
+        )
+        
+    }
 }

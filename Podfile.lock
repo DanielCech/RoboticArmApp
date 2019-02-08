@@ -1,0 +1,43 @@
+PODS:
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
+  - Fabric (1.7.12)
+  - ReactiveCocoa (8.0.0):
+    - ReactiveSwift (~> 4.0)
+  - ReactiveSwift (4.0.0):
+    - Result (~> 4.0)
+  - Realm (3.10.0):
+    - Realm/Headers (= 3.10.0)
+  - Realm/Headers (3.10.0)
+  - RealmSwift (3.10.0):
+    - Realm (= 3.10.0)
+  - Result (4.0.0)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - ReactiveCocoa
+  - RealmSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
+    - ReactiveCocoa
+    - ReactiveSwift
+    - Realm
+    - RealmSwift
+    - Result
+
+SPEC CHECKSUMS:
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
+  ReactiveCocoa: 87cb64d78424d749a0bbfd9b07e4825e8d834066
+  ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
+  Realm: 85ab9e4f779d66f6e9ffeb118dc25b7f130c96ac
+  RealmSwift: 69121c8b86d0ae005fb779efdb10e606732e1c74
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+
+PODFILE CHECKSUM: 11f49b0169539f8349f8c68b427bdc50fadcd296
+
+COCOAPODS: 1.5.3
