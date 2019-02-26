@@ -153,7 +153,7 @@ import enum Result.NoError
             initialValue = CGFloat(value) / multiplier
         }
 
-        var boundedAngle = (initialValue + gesture.positionY) - initialAmount;
+        var boundedAngle = ((initialValue + gesture.positionY) - initialAmount) * multiplier;
         //    if boundedAngle > midPointAngle {
         //      boundedAngle -= 2 * CGFloat.pi
         //    } else if boundedAngle < (midPointAngle - 2 * CGFloat.pi) {
@@ -163,7 +163,7 @@ import enum Result.NoError
         boundedAngle = min(CGFloat(maximumValue), max(CGFloat(minimumValue), boundedAngle))
         //value = min(maximumValue, max(minimumValue, Float(boundedAngle)))
         //    valueUpdateClosure?(value)
-        value = Float(boundedAngle * multiplier)
+        value = Float(boundedAngle)
         valueObserver.send(value: value)
 
         // Inform changes based on continuous behaviour of the knob.
