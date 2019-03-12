@@ -334,6 +334,7 @@
 				29360A60F050FB8AABC0B3AA /* [CP] Check Pods Manifest.lock */,
 				374ED99220B9454D00E8C2D7 /* Sources */,
 				374ED99320B9454D00E8C2D7 /* Frameworks */,
+				37712F7E2225FA2600ABC47A /* VersionIcon */,
 				374ED99420B9454D00E8C2D7 /* Resources */,
 				374ED9BC20B946CF00E8C2D7 /* Embed Frameworks */,
 				36B972DB6F7E30503E95CA94 /* [CP] Embed Pods Frameworks */,
@@ -454,7 +455,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 054f4ed294b3240a4a7dfb31c6e59dbcef492ff1 c198515730003df95014f32cf729a5c7382d691b8a290d31a07eafe727ff3656";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 054f4ed294b3240a4a7dfb31c6e59dbcef492ff1 c198515730003df95014f32cf729a5c7382d691b8a290d31a07eafe727ff3656\n";
+		};
+		37712F7E2225FA2600ABC47A /* VersionIcon */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = VersionIcon;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    versionicon --ribbon Red.png --title Devel.png --script \"/Users/dan/Documents/[Development]/[Projects]/SwiftScripts/versionIcon\" --iphone --original\nelse\n    versionicon --ribbon Red.png --title Devel.png --script \"/Users/dan/Documents/[Development]/[Projects]/SwiftScripts/versionIcon\" --iphone\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
