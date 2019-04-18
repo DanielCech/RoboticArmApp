@@ -731,8 +731,6 @@ void Results::prepare_async(ForCallback force)
 
 NotificationToken Results::add_notification_callback(CollectionChangeCallback cb) &
 {
-    if (m_descriptor_ordering.will_apply_limit())
-        throw UnimplementedOperationException("Change notifications for Results with a limit are not yet implemented");
     prepare_async(ForCallback{true});
     return {m_notifier, m_notifier->add_callback(std::move(cb))};
 }
@@ -768,7 +766,6 @@ void Results::Internal::set_table_view(Results& results, TableView &&tv)
     REALM_ASSERT(results.m_table_view.is_in_sync());
     REALM_ASSERT(results.m_table_view.is_attached());
 }
-
 #define REALM_RESULTS_TYPE(T) \
     template T Results::get<T>(size_t); \
     template util::Optional<T> Results::first<T>(); \
@@ -815,8 +812,15 @@ Results::UnsupportedColumnTypeException::UnsupportedColumnTypeException(size_t c
 {
 }
 
+Results::InvalidPropertyException::InvalidPropertyException(const std::string& object_type, const std::string& property_name)
+: std::logic_error(util::format("Property '%1.%2' does not exist", object_type, property_name))
+, object_type(object_type), property_name(property_name)
+{
+}
+
 Results::UnimplementedOperationException::UnimplementedOperationException(const char* msg)
 : std::logic_error(msg)
-{ }
+{
+}
 
 } // namespace realm

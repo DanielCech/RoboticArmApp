@@ -8,6 +8,10 @@ def global_pods
   pod 'RealmSwift'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'MobileVLCKit'
+  pod 'VersionIcon'
+  pod 'AEXML'
+  pod 'Blockly'
 end
 
 
