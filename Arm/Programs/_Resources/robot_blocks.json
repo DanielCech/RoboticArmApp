@@ -173,6 +173,70 @@
         "helpUrl": ""
     },
     {
+        "type": "get_x_axis_of_cube_n_inline",
+        "message0": "get x-axis of cube %1",
+        "args0": [
+            {
+                "type": "field_number",
+                "name": "n",
+                "check": "Number"
+            }
+        ],
+        "inputsInline": true,
+        "output": "Number",
+        "colour": 150,
+        "tooltip": "Get x-axis of cube n",
+        "helpUrl": ""
+    },
+    {
+        "type": "get_x_axis_of_cube_n",
+        "message0": "get x-axis of cube %1",
+        "args0": [
+            {
+                "type": "input_value",
+                "name": "n",
+                "check": "Number"
+            }
+        ],
+        "inputsInline": true,
+        "output": "Number",
+        "colour": 150,
+        "tooltip": "Get x-axis of cube n",
+        "helpUrl": ""
+    },
+    {
+        "type": "get_z_axis_of_cube_n_inline",
+        "message0": "get z-axis of cube %1",
+        "args0": [
+            {
+                "type": "field_number",
+                "name": "n",
+                "check": "Number"
+            }
+        ],
+        "inputsInline": true,
+        "output": "Number",
+        "colour": 150,
+        "tooltip": "Get z-axis of cube n",
+        "helpUrl": ""
+    },
+    {
+        "type": "get_z_axis_of_cube_n",
+        "message0": "get z-axis of cube %1",
+        "args0": [
+            {
+                "type": "input_value",
+                "name": "n",
+                "check": "Number"
+            }
+        ],
+        "inputsInline": true,
+        "output": "Number",
+        "colour": 150,
+        "tooltip": "Get z-axis of cube n",
+        "helpUrl": ""
+    },
+    {
         "type": "play_sound",
         "message0": "Play %1",
         "args0": [{

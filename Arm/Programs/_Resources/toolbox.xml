@@ -23,6 +23,10 @@
         <block type="move"></block>
         <block type="is_place_free_inline"></block>
         <block type="is_place_free"></block>
+        <block type="get_x_axis_of_cube_n_inline"></block>
+        <block type="get_x_axis_of_cube_n"></block>
+        <block type="get_z_axis_of_cube_n_inline"></block>
+        <block type="get_z_axis_of_cube_n"></block>
     </category>
     <category name="Logic" colour="210">
         <block type="controls_if"></block>

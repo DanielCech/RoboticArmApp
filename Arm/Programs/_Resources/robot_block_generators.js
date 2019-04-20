@@ -56,6 +56,30 @@ Blockly.JavaScript['is_place_free'] = function(block) {
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+Blockly.JavaScript['get_x_axis_of_cube_n_inline'] = function(block) {
+    var value_n = block.getFieldValue('n')
+    var code = 'RobotCommands.getXAxisOfCube(' + value_n + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['get_x_axis_of_cube_n'] = function(block) {
+    var value_n = Blockly.JavaScript.valueToCode(block, 'n', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'RobotCommands.getXAxisOfCube(' + value_n + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['get_z_axis_of_cube_n_inline'] = function(block) {
+    var value_n = block.getFieldValue('n')
+    var code = 'RobotCommands.getZAxisOfCube(' + value_n + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['get_z_axis_of_cube_n'] = function(block) {
+    var value_n = Blockly.JavaScript.valueToCode(block, 'n', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'RobotCommands.getZAxisOfCube(' + value_n + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
 // Generators for blocks defined in `sound_blocks.json`.
 Blockly.JavaScript['play_sound'] = function(block) {
     var value = '\'' + block.getFieldValue('VALUE') + '\'';

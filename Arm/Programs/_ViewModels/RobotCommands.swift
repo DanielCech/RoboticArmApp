@@ -17,6 +17,8 @@ import JavaScriptCore
     static func pause(_ seconds: Float)
     static func move(_ axisX: Float, _ axisY: Float, _ axisZ: Float, _ time: Float)
     static func isPlaceFree(_ axisX: Float, _ axisZ: Float) -> Bool
+    static func getXAxisOfCube(_ n: Int) -> Int
+    static func getZAxisOfCube(_ n: Int) -> Int
 }
 
 /**
@@ -75,5 +77,19 @@ import JavaScriptCore
         print("isPlaceFree \(axisX), \(axisZ)")
         
         return false
+    }
+    
+    static func getXAxisOfCube(_ n: Int) -> Int {
+        
+        print("getXAxisOfCube \(n)")
+        
+        return 1
+    }
+    
+    static func getZAxisOfCube(_ n: Int) -> Int {
+        
+        print("getZAxisOfCube \(n)")
+        
+        return 2
     }
 }
