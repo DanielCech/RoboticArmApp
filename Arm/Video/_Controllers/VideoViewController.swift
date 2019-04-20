@@ -41,7 +41,6 @@ class VideoViewController: UIViewController {
     }
     
     func lookForCodesInScene() {
-        print("ahoj")
         
         //let videoImage = UIImage(view: self.view) //videoView.asImage()
         

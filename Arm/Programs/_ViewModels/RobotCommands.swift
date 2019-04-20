@@ -9,6 +9,8 @@
 import Foundation
 import JavaScriptCore
 
+typealias SimpleBlock = () -> Void
+
 /**
  Protocol declaring all methods and properties that should be exposed to a JS context.
  */
@@ -30,6 +32,28 @@ import JavaScriptCore
     /// removed playback completion.
     private static var conditionLocks = [String: NSConditionLock]()
     
+    static func runSynchronously(code: @escaping (@escaping SimpleBlock) -> Void) {
+        // Create a condition lock so we don't return back to JS code until completion is called
+        let uuid = NSUUID().uuidString
+        self.conditionLocks[uuid] = NSConditionLock(condition: 0)
+        
+        let completion = {
+            // Change the lock condition to "1"
+            self.conditionLocks[uuid]?.lock()
+            self.conditionLocks[uuid]?.unlock(withCondition: 1)
+        }
+        
+        code(completion)
+        
+        // Block this thread by waiting for the condition lock to change to "1", which happens when
+        // playback is complete.
+        // Once this happens, dispose of the lock and let control return back to the JS code (which
+        // was the original caller of `MusicMaker.playSound(...)`).
+        self.conditionLocks[uuid]?.lock(whenCondition: 1)
+        self.conditionLocks[uuid]?.unlock()
+        self.conditionLocks[uuid] = nil
+    }
+    
     static func enablePump(_ enable: Bool) {
         
         print("enablePump \(enable)")
@@ -48,13 +72,10 @@ import JavaScriptCore
         
         print("pause \(seconds)")
         
-        // Create a condition lock for this player so we don't return back to JS code until
-        // the player has finished playing.
-        let uuid = NSUUID().uuidString
-        self.conditionLocks[uuid] = NSConditionLock(condition: 0)
-        
-        delay(3) {
-            self.conditionLocks[uuid] = NSConditionLock(condition: 1)
+        runSynchronously { completion in
+            delay(Double(seconds)) {
+                completion()
+            }
         }
     }
     
@@ -62,13 +83,10 @@ import JavaScriptCore
         
         print("move \(axisX), \(axisY), \(axisZ), \(time)")
         
-        // Create a condition lock for this player so we don't return back to JS code until
-        // the player has finished playing.
-        let uuid = NSUUID().uuidString
-        self.conditionLocks[uuid] = NSConditionLock(condition: 0)
-        
-        delay(3) {
-            self.conditionLocks[uuid] = NSConditionLock(condition: 1)
+        runSynchronously { completion in
+            delay(Double(time)) {
+                completion()
+            }
         }
     }
     
