@@ -13,7 +13,7 @@ Blockly.JavaScript['enable_pump'] = function(block) {
 };
 
 Blockly.JavaScript['pause_inline'] = function(block) {
-    var value_seconds = block.getFieldValue('seconds');
+    var value_seconds = block.getFieldValue('seconds').replace(",", ".");
     var code = 'RobotCommands.pause(' + value_seconds + ');\n';
     return code;
 };
@@ -25,10 +25,10 @@ Blockly.JavaScript['pause'] = function(block) {
 };
 
 Blockly.JavaScript['move_inline'] = function(block) {
-    var value_x = block.getFieldValue('x');
-    var value_y = block.getFieldValue('y');
-    var value_z = block.getFieldValue('z');
-    var value_t = block.getFieldValue('t')
+    var value_x = block.getFieldValue('x').replace(",", ".");
+    var value_y = block.getFieldValue('y').replace(",", ".");
+    var value_z = block.getFieldValue('z').replace(",", ".");
+    var value_t = block.getFieldValue('t').replace(",", ".");
     var code = 'RobotCommands.move(' + value_x + ', ' + value_y + ', ' + value_z + ', ' + value_t + ');\n';
     return code;
 };
@@ -43,20 +43,17 @@ Blockly.JavaScript['move'] = function(block) {
 };
 
 Blockly.JavaScript['is_place_free_inline'] = function(block) {
-    var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
-//    var code = 'RobotCommands.isPlaceFree(' + value_x + ', ' + value_z + ');\n';
-    var code = 'RobotCommands.enablePump(true);\n';
-    return code
+    var value_x = block.getFieldValue('x').replace(",", ".");
+    var value_z = block.getFieldValue('z').replace(",", ".");
+    var code = 'RobotCommands.isPlaceFree(' + value_x + ', ' + value_z + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
-
 
 Blockly.JavaScript['is_place_free'] = function(block) {
     var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
     var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
-//    var code = 'RobotCommands.isPlaceFree(' + value_x + ', ' + value_z + ');\n';
-    var code = 'RobotCommands.enablePump(true);\n';
-    return code
+    var code = 'RobotCommands.isPlaceFree(' + value_x + ', ' + value_z + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 // Generators for blocks defined in `sound_blocks.json`.
