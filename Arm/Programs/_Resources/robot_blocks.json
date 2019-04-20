@@ -5,7 +5,7 @@
         "args0": [
             {
                 "type": "field_checkbox",
-                "name": "enabled",
+                "name": "enable",
                 "checked": true
             }
         ],
