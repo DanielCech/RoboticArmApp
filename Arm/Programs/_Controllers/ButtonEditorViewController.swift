@@ -21,6 +21,7 @@ import UIKit
  */
 class ButtonEditorViewController: UIViewController {
     
+    let workbenchScale: CGFloat = 0.8
     // MARK: - Properties
     
     /// The ID of the button that is being edited.
@@ -41,7 +42,6 @@ class ButtonEditorViewController: UIViewController {
         
         // Load sound blocks into the block factory
         do {
-            try blockFactory.load(fromJSONPaths: ["sound_blocks.json"])
             try blockFactory.load(fromJSONPaths: ["robot_blocks.json"])
         } catch let error {
             print("An error occurred loading the sound blocks: \(error)")
@@ -74,7 +74,17 @@ class ButtonEditorViewController: UIViewController {
         // Add editor to this view controller
         addChildViewController(workbenchViewController)
         view.addSubview(workbenchViewController.view)
-        workbenchViewController.view.frame = view.bounds
+        
+        let workbenchWidth = (view.bounds.size.width) / workbenchScale
+        let workbenchHeight = (view.bounds.size.height) / workbenchScale
+        let bounds = CGRect(
+            x: -(workbenchWidth - view.bounds.size.width) / 2,
+            y: -(workbenchHeight - view.bounds.size.height) / 2,
+            width: workbenchWidth,
+            height: workbenchHeight)
+        
+        workbenchViewController.view.frame = bounds
+        workbenchViewController.view.transform = CGAffineTransform(scaleX: workbenchScale, y: workbenchScale)
         workbenchViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         workbenchViewController.didMove(toParentViewController: self)
     }

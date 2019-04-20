@@ -36,6 +36,16 @@ Blockly.JavaScript['move_inline'] = function(block) {
     return code;
 };
 
+Blockly.JavaScript['is_place_free_inline'] = function(block) {
+    var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
+    //    var code = 'RobotCommands.isPlaceFree(' + value_x + ', ' + value_z + ');\n';
+    var code = 'RobotCommands.enablePump(true);\n';
+    console.log(code)
+    return code
+};
+
+
 Blockly.JavaScript['is_place_free'] = function(block) {
     var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
     var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
@@ -45,3 +55,8 @@ Blockly.JavaScript['is_place_free'] = function(block) {
     return code
 };
 
+// Generators for blocks defined in `sound_blocks.json`.
+Blockly.JavaScript['play_sound'] = function(block) {
+    var value = '\'' + block.getFieldValue('VALUE') + '\'';
+    return 'MusicMaker.playSound(' + value + ');\n';
+};

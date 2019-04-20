@@ -15,10 +15,13 @@
 
 <xml id="toolbox" style="display: none">
     <category name="Robot" colour="150">
+        <block type="enable_pump_inline"></block>
         <block type="enable_pump"></block>
+        <block type="pause_inline"></block>
         <block type="pause"></block>
         <block type="move_inline"></block>
         <block type="move"></block>
+        <block type="is_place_free_inline"></block>
         <block type="is_place_free"></block>
     </category>
     <category name="Logic" colour="210">

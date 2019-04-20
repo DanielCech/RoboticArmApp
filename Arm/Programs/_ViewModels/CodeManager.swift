@@ -41,14 +41,12 @@ class CodeManager {
         requestBuilder.addJSONBlockDefinitionFiles(fromDefaultFiles: .allDefault)
         // Load the block definitions for our custom sound block
         requestBuilder.addJSONBlockDefinitionFiles([
-            "sound_blocks.json",
             "robot_blocks.json"
             ])
         requestBuilder.addJSBlockGeneratorFiles([
             // Use JavaScript code generators for the default blocks
             "javascript_compressed.js",
             // Use JavaScript code generators for our custom sound block
-            "sound_block_generators.js",
             "robot_block_generators.js"
             ])
         

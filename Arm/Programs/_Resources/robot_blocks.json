@@ -1,5 +1,22 @@
 [
     {
+        "type": "enable_pump_inline",
+        "message0": "enable pump: %1",
+        "args0": [
+            {
+                "type": "field_checkbox",
+                "name": "enabled",
+                "checked": true
+            }
+        ],
+        "inputsInline": true,
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 150,
+        "tooltip": "Enable robot pump on/off",
+        "helpUrl": ""
+    },
+    {
         "type": "enable_pump",
         "message0": "enable pump %1",
         "args0": [
@@ -14,6 +31,23 @@
         "nextStatement": null,
         "colour": 150,
         "tooltip": "Enable robot pump on/off",
+        "helpUrl": ""
+    },
+    {
+        "type": "pause_inline",
+        "message0": "pause %1",
+        "args0": [
+            {
+                "type": "field_number",
+                "name": "seconds",
+                "check": "Number"
+            }
+        ],
+        "inputsInline": true,
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 150,
+        "tooltip": "Pause robot for some amount of time",
         "helpUrl": ""
     },
     {
@@ -97,8 +131,29 @@
         "helpUrl": ""
     },
     {
+        "type": "is_place_free_inline",
+        "message0": "is place free? x: %1 z: %2",
+        "args0": [
+            {
+                "type": "field_number",
+                "name": "x",
+                "check": "Number"
+            },
+            {
+                "type": "field_number",
+                "name": "z",
+                "check": "Number"
+            }
+        ],
+        "inputsInline": true,
+        "output": "Boolean",
+        "colour": 150,
+        "tooltip": "Is place [x, z] free?",
+        "helpUrl": ""
+    },
+    {
         "type": "is_place_free",
-        "message0": "is place free? x: %1 %2",
+        "message0": "is place free? x: %1 z: %2",
         "args0": [
             {
                 "type": "input_value",
@@ -116,5 +171,31 @@
         "colour": 150,
         "tooltip": "Is place [x, z] free?",
         "helpUrl": ""
+    },
+    {
+        "type": "play_sound",
+        "message0": "Play %1",
+        "args0": [{
+            "type": "field_dropdown",
+            "name": "VALUE",
+            "options": [
+                ["Cheer", "Sounds/yeah.mp3"],
+                ["Fart", "Sounds/fart.wav"],
+                ["Horn", "Sounds/horn.wav"],
+                ["Success", "Sounds/success.wav"],
+                ["Whistle", "Sounds/whistle.wav"],
+                ["C4", "Sounds/c4.m4a"],
+                ["D4", "Sounds/d4.m4a"],
+                ["E4", "Sounds/e4.m4a"],
+                ["F4", "Sounds/f4.m4a"],
+                ["G4", "Sounds/g4.m4a"],
+                ["A5", "Sounds/a5.m4a"],
+                ["B5", "Sounds/b5.m4a"],
+                ["C5", "Sounds/c5.m4a"]
+            ]
+        }],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 20
     }
 ]
