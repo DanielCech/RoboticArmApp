@@ -63,6 +63,8 @@
 		37AB187622629B0A00A45F82 /* QRDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB187522629B0A00A45F82 /* QRDetector.swift */; };
 		37AB187922629C7D00A45F82 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB187822629C7D00A45F82 /* UIViewExtension.swift */; };
 		37AB187A22629ED200A45F82 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3755A581223EA06E00D5F9F1 /* VideoViewController.swift */; };
+		37B0F25B226BCB9400E8EFA7 /* RobotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B0F25A226BCB9400E8EFA7 /* RobotState.swift */; };
+		37B0F25E226BCBF600E8EFA7 /* RobotVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B0F25D226BCBF600E8EFA7 /* RobotVision.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,8 +126,6 @@
 		376467AA225F1F250069F45B /* b5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = b5.m4a; sourceTree = "<group>"; };
 		3764899C215E745200EF9CB2 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		3764899E215E752C00EF9CB2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		376E7BEB20D850E200D02121 /* ProgramStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramStep.swift; sourceTree = "<group>"; };
-		376E7BED20D850EC00D02121 /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		376E7BF120D8593000D02121 /* Strongify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strongify.swift; sourceTree = "<group>"; };
 		376E7BF320D8593000D02121 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		376E7BF520D8593000D02121 /* LiveKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveKnob.swift; sourceTree = "<group>"; };
@@ -143,6 +143,8 @@
 		37A60D682263EC0C00580B41 /* RobotCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotCommands.swift; sourceTree = "<group>"; };
 		37AB187522629B0A00A45F82 /* QRDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetector.swift; sourceTree = "<group>"; };
 		37AB187822629C7D00A45F82 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		37B0F25A226BCB9400E8EFA7 /* RobotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotState.swift; sourceTree = "<group>"; };
+		37B0F25D226BCBF600E8EFA7 /* RobotVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotVision.swift; sourceTree = "<group>"; };
 		7D533DD48F65A9E7BEC9912F /* Pods_Arm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Arm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -354,14 +356,15 @@
 		376E7BE920D850B400D02121 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				37AB187722629C6A00A45F82 /* _Extensions */,
 				371DA79620D8FA3700627515 /* _Controllers */,
+				37AB187722629C6A00A45F82 /* _Extensions */,
 				376E7BEF20D8593000D02121 /* _Libraries */,
 				376E7BEA20D850C200D02121 /* _Model */,
 				3764899B215E738000EF9CB2 /* _Protocols */,
+				37B0F25C226BCBD400E8EFA7 /* _ViewModel */,
+				3755A583223EB11400D5F9F1 /* Arm-Bridging-Header.h */,
 				373F974D20DBA896005B5401 /* ArmError.swift */,
 				3764899E215E752C00EF9CB2 /* Constants.swift */,
-				3755A583223EB11400D5F9F1 /* Arm-Bridging-Header.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -369,8 +372,6 @@
 		376E7BEA20D850C200D02121 /* _Model */ = {
 			isa = PBXGroup;
 			children = (
-				376E7BEB20D850E200D02121 /* ProgramStep.swift */,
-				376E7BED20D850EC00D02121 /* Program.swift */,
 			);
 			path = _Model;
 			sourceTree = "<group>";
@@ -450,6 +451,15 @@
 				37AB187822629C7D00A45F82 /* UIViewExtension.swift */,
 			);
 			path = _Extensions;
+			sourceTree = "<group>";
+		};
+		37B0F25C226BCBD400E8EFA7 /* _ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				37B0F25A226BCB9400E8EFA7 /* RobotState.swift */,
+				37B0F25D226BCBF600E8EFA7 /* RobotVision.swift */,
+			);
+			path = _ViewModel;
 			sourceTree = "<group>";
 		};
 		6AA30483F33EEF2A34A6C156 /* Frameworks */ = {
@@ -641,8 +651,10 @@
 				371DA79520D8FA3000627515 /* TabBarViewController.swift in Sources */,
 				37AB187622629B0A00A45F82 /* QRDetector.swift in Sources */,
 				376E7C0C20D85E8600D02121 /* DCTableViewController.swift in Sources */,
+				37B0F25B226BCB9400E8EFA7 /* RobotState.swift in Sources */,
 				3764899D215E745200EF9CB2 /* ReusableView.swift in Sources */,
 				3764678C225F1F120069F45B /* AudioPlayer.swift in Sources */,
+				37B0F25E226BCBF600E8EFA7 /* RobotVision.swift in Sources */,
 				376E7BF720D8593000D02121 /* Strongify.swift in Sources */,
 				374ED9EB20B97BA500E8C2D7 /* ControlsViewController.swift in Sources */,
 				376E7C0A20D85E8600D02121 /* DCTableViewStructure.swift in Sources */,

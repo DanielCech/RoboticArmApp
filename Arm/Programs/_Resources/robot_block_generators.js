@@ -42,6 +42,34 @@ Blockly.JavaScript['move'] = function(block) {
     return code;
 };
 
+Blockly.JavaScript['angle_inline'] = function(block) {
+    var value_alpha = block.getFieldValue('alpha').replace(",", ".");
+    var value_t = block.getFieldValue('t').replace(",", ".");
+    var code = 'RobotCommands.setAngle(' + value_alpha + ', ' + value_t + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['angle'] = function(block) {
+    var value_alpha = Blockly.JavaScript.valueToCode(block, 'alpha', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_t = Blockly.JavaScript.valueToCode(block, 't', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'RobotCommands.setAngle(' + value_alpha + ', ' + value_t + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['circular_inline'] = function(block) {
+    var value_radius = block.getFieldValue('radius').replace(",", ".");
+    var value_t = block.getFieldValue('t').replace(",", ".");
+    var code = 'RobotCommands.circularMovement(' + value_radius + ', ' + value_t + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['circular'] = function(block) {
+    var value_radius = Blockly.JavaScript.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_t = Blockly.JavaScript.valueToCode(block, 't', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'RobotCommands.circularMovement(' + value_radius + ', ' + value_t + ');\n';
+    return code;
+};
+
 Blockly.JavaScript['is_place_free_inline'] = function(block) {
     var value_x = block.getFieldValue('x').replace(",", ".");
     var value_z = block.getFieldValue('z').replace(",", ".");
@@ -78,6 +106,18 @@ Blockly.JavaScript['get_z_axis_of_cube_n'] = function(block) {
     var value_n = Blockly.JavaScript.valueToCode(block, 'n', Blockly.JavaScript.ORDER_ATOMIC);
     var code = 'RobotCommands.getZAxisOfCube(' + value_n + ')';
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['reset_cube_inline'] = function(block) {
+    var value_cube = block.getFieldValue('cube').replace(",", ".");
+    var code = 'RobotCommands.resetCubePosition(' + value_cube + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['reset_cube'] = function(block) {
+    var value_cube = Blockly.JavaScript.valueToCode(block, 'cube', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'RobotCommands.resetCubePosition(' + value_cube + ');\n';
+    return code;
 };
 
 // Generators for blocks defined in `sound_blocks.json`.

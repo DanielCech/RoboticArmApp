@@ -18,6 +18,7 @@ typealias SimpleBlock = () -> Void
     static func enablePump(_ enable: Bool)
     static func pause(_ seconds: Float)
     static func move(_ axisX: Float, _ axisY: Float, _ axisZ: Float, _ time: Float)
+    static func setAngle(_ alpha: Float, _ time: Float)
     static func isPlaceFree(_ axisX: Float, _ axisZ: Float) -> Bool
     static func getXAxisOfCube(_ n: Int) -> Int
     static func getZAxisOfCube(_ n: Int) -> Int
@@ -58,14 +59,7 @@ typealias SimpleBlock = () -> Void
         
         print("enablePump \(enable)")
         
-        // Create a condition lock for this player so we don't return back to JS code until
-        // the player has finished playing.
-        let uuid = NSUUID().uuidString
-        self.conditionLocks[uuid] = NSConditionLock(condition: 0)
-        
-        delay(3) {
-            self.conditionLocks[uuid] = NSConditionLock(condition: 1)
-        }
+        RobotState.shared.enablePump(enable: enable)
     }
     
     static func pause(_ seconds: Float) {
@@ -84,10 +78,34 @@ typealias SimpleBlock = () -> Void
         print("move \(axisX), \(axisY), \(axisZ), \(time)")
         
         runSynchronously { completion in
-            delay(Double(time)) {
+            RobotState.shared.moveTo(x: axisX, y: axisY, z: axisZ, time: time, completion: {
                 completion()
-            }
+            })
         }
+    }
+    
+    static func setAngle(_ alpha: Float, _ time: Float) {
+
+        print("setAngle \(alpha), \(time)")
+        
+        runSynchronously { completion in
+            RobotState.shared.setAngle(alpha: alpha, time: time, completion: {
+                completion()
+            })
+        }
+    
+    }
+    
+    static func circularMovement(_ radius: Float, _ time: Float) {
+        
+        print("circularMovement \(radius), \(time)")
+        
+        runSynchronously { completion in
+            RobotState.shared.circularMovement(radius: radius, time: time, completion: {
+                completion()
+            })
+        }
+        
     }
     
     static func isPlaceFree(_ axisX: Float, _ axisZ: Float) -> Bool {
@@ -109,5 +127,11 @@ typealias SimpleBlock = () -> Void
         print("getZAxisOfCube \(n)")
         
         return 2
+    }
+    
+    static func resetCubePosition(_ cube: Int) {
+        
+        print("resetCubePosition \(cube)")
+        
     }
 }

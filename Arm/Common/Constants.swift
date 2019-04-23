@@ -8,13 +8,9 @@
 
 import Foundation
 
-enum TableCellType: String, CellTypeDescribing {
-    // Common
-    case programCell
-    case programStepCell
+struct Constants {
+    static let initialX = 90
 }
-
-
 
 
 func delay(_ delay: Double, closure: @escaping () -> Void) {

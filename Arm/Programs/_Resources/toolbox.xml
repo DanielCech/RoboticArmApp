@@ -21,12 +21,18 @@
         <block type="pause"></block>
         <block type="move_inline"></block>
         <block type="move"></block>
+        <block type="angle_inline"></block>
+        <block type="angle"></block>
+        <block type="circular_inline"></block>
+        <block type="circular"></block>
         <block type="is_place_free_inline"></block>
         <block type="is_place_free"></block>
         <block type="get_x_axis_of_cube_n_inline"></block>
         <block type="get_x_axis_of_cube_n"></block>
         <block type="get_z_axis_of_cube_n_inline"></block>
         <block type="get_z_axis_of_cube_n"></block>
+        <block type="reset_cube_inline"></block>
+        <block type="reset_cube"></block>
     </category>
     <category name="Logic" colour="210">
         <block type="controls_if"></block>
@@ -155,7 +161,7 @@
     <sep></sep>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Functions" colour="290" custom="PROCEDURE"></category>
-    <category name="Sound" colour="20">
+    <category name="Sound" colour="315">
         <block type="play_sound"></block>
     </category>
     </xml>
