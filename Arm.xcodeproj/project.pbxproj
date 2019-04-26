@@ -60,6 +60,7 @@
 		376E7C0D20D85E8600D02121 /* DCCellDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E7C0420D85E8600D02121 /* DCCellDescription.swift */; };
 		376E7C0E20D85E8600D02121 /* DCExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E7C0520D85E8600D02121 /* DCExceptionHandler.m */; };
 		37A030642273369A00FEFB9B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A030632273369A00FEFB9B /* Helper.swift */; };
+		37A030662273778300FEFB9B /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A030652273778300FEFB9B /* SourceCodeViewController.swift */; };
 		37A60D692263EC0C00580B41 /* RobotCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A60D682263EC0C00580B41 /* RobotCommands.swift */; };
 		37AB187622629B0A00A45F82 /* QRDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB187522629B0A00A45F82 /* QRDetector.swift */; };
 		37AB187922629C7D00A45F82 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB187822629C7D00A45F82 /* UIViewExtension.swift */; };
@@ -142,6 +143,7 @@
 		376E7C0420D85E8600D02121 /* DCCellDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCCellDescription.swift; sourceTree = "<group>"; };
 		376E7C0520D85E8600D02121 /* DCExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCExceptionHandler.m; sourceTree = "<group>"; };
 		37A030632273369A00FEFB9B /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		37A030652273778300FEFB9B /* SourceCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCodeViewController.swift; sourceTree = "<group>"; };
 		37A60D682263EC0C00580B41 /* RobotCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotCommands.swift; sourceTree = "<group>"; };
 		37AB187522629B0A00A45F82 /* QRDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetector.swift; sourceTree = "<group>"; };
 		37AB187822629C7D00A45F82 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			children = (
 				37646789225F1F120069F45B /* ButtonEditorViewController.swift */,
 				37646784225F1F110069F45B /* ProgramsViewController.swift */,
+				37A030652273778300FEFB9B /* SourceCodeViewController.swift */,
 			);
 			path = _Controllers;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				3764678B225F1F120069F45B /* FileHelper.swift in Sources */,
 				37646792225F1F130069F45B /* ButtonEditorViewController.swift in Sources */,
 				371DA79520D8FA3000627515 /* TabBarViewController.swift in Sources */,
+				37A030662273778300FEFB9B /* SourceCodeViewController.swift in Sources */,
 				37AB187622629B0A00A45F82 /* QRDetector.swift in Sources */,
 				376E7C0C20D85E8600D02121 /* DCTableViewController.swift in Sources */,
 				37B0F25B226BCB9400E8EFA7 /* RobotState.swift in Sources */,

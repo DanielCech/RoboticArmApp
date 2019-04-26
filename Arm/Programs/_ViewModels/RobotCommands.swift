@@ -19,6 +19,7 @@ typealias SimpleBlock = () -> Void
     static func pause(_ seconds: Float)
     static func move(_ axisX: Float, _ axisY: Float, _ axisZ: Float, _ time: Float)
     static func setAngle(_ alpha: Float, _ time: Float)
+    static func circularMovement(_ radius: Float, _ time: Float)
     static func isPlaceFree(_ axisX: Float, _ axisZ: Float) -> Bool
     static func getXAxisOfCube(_ n: Int) -> Int
     static func getZAxisOfCube(_ n: Int) -> Int

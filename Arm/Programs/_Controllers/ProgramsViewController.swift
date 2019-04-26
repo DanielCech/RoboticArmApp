@@ -44,6 +44,8 @@ class ProgramsViewController: UIViewController {
     /// The current button ID that is being edited.
     private var editingButtonID: String = ""
     
+    private var programAlreadyShown = false
+    
     /// Instruction label.
     @IBOutlet weak var instructions: UILabel!
     
@@ -60,6 +62,12 @@ class ProgramsViewController: UIViewController {
             button?.layer.masksToBounds = true
             button?.layer.borderColor = UIColor.orange.cgColor
             button?.layer.borderWidth = 2
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startOrEditProgram))
+            button?.addGestureRecognizer(tapGesture)
+            
+            let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(showJavascriptCode))
+            button?.addGestureRecognizer(longGesture)
         }
         
         
@@ -75,6 +83,8 @@ class ProgramsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        programAlreadyShown = false
         
         // If this view controller is appearing again after editing a button, generate new code for it.
         if !editingButtonID.isEmpty {
@@ -126,8 +136,8 @@ class ProgramsViewController: UIViewController {
         updateState(animated: true)
     }
     
-    @IBAction func pressedMusicButton(_ sender: Any) {
-        guard let button = sender as? UIButton,
+    @IBAction func startOrEditProgram(_ sender: Any) {
+        guard let recognizer = sender as? UIGestureRecognizer, let button = recognizer.view as? UIButton,
             let buttonID = button.currentTitle else {
                 return
         }
@@ -136,6 +146,22 @@ class ProgramsViewController: UIViewController {
             editButton(buttonID: buttonID)
         } else {
             runCode(forButtonID: buttonID)
+        }
+    }
+    
+    @objc func showJavascriptCode(_ sender: Any) {
+        if programAlreadyShown { return }
+        
+        guard let recognizer = sender as? UIGestureRecognizer, let button = recognizer.view as? UIButton,
+            let buttonID = button.currentTitle else {
+                return
+        }
+        
+        if let code = codeManager.code(forKey: buttonID), code != "" {
+            let sourceCodeController: SourceCodeViewController = SourceCodeViewController.fromStoryboard(storyboardName: "Main")
+            sourceCodeController.showText(text: code)
+            navigationController?.pushViewController(sourceCodeController, animated: true)
+            programAlreadyShown = true
         }
     }
     

@@ -36,6 +36,11 @@ class RobotState {
     
     func moveTo(x: Float, y: Float, z: Float, time: Float, completion: @escaping SimpleBlock) {
         
+        if time < 0.2 {
+            completion()
+            return
+        }
+        
         isInMotion = true
         
         let originalX = valueX.value
@@ -63,6 +68,12 @@ class RobotState {
     }
     
     func setAngle(alpha: Float, time: Float, completion: @escaping SimpleBlock) {
+        
+        if time < 0.2 {
+            completion()
+            return
+        }
+        
         isInMotion = true
         
         let originalAngle = valueAngle.value
@@ -85,8 +96,39 @@ class RobotState {
     }
 
     func circularMovement(radius: Float, time: Float, completion: @escaping SimpleBlock) {
-        delay(Double(time)) {
+        
+        if time < 0.2 {
             completion()
+            return
+        }
+        
+        isInMotion = true
+        
+        let originalX = self.valueX.value
+        let originalZ = self.valueZ.value
+        
+        // Initial movement
+        moveTo(x: valueX.value + radius, y: valueY.value, z: valueZ.value, time: 2) { [weak self] in
+        
+            guard let self = self else { return }
+            
+            let movementBegin = Date()
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.movementTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
+                    
+                    let timeDelta = Date().timeIntervalSince(movementBegin)
+                    
+                    self?.valueX.value = originalX + radius * cos((Float(timeDelta) / time) * 2 * Float.pi)
+                    self?.valueZ.value = originalZ + radius * sin((Float(timeDelta) / time) * 2 * Float.pi)
+                    
+                    if timeDelta > Double(time) {
+                        timer.invalidate()
+                        self?.isInMotion = false
+                        completion()
+                    }
+                }
+            }
         }
     }
     
