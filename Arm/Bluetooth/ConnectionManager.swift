@@ -80,8 +80,9 @@ internal class ConnectionManager: NSObject {
         }
     }
 
-    public func control(x: Int, y: Int, z: Int, angle: Int, pump: Bool) {
-        _roboticArmDevice?.control(x: x, y: y, z: z, angle: angle, pump: pump)
+    public func control(x: Float, y: Float, z: Float, angle: Float, pump: Bool, immediately: Bool) {
+        print(String(format: "x: %.1f, y: %.1f, z: %.1f, angle: %.1f, pump: %d", x, y, z, angle, pump))
+        _roboticArmDevice?.control(x: x, y: y, z: z, angle: angle, pump: pump, immmediately: immediately)
     }
 }
 

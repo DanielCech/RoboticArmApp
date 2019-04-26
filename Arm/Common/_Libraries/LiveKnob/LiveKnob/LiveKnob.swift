@@ -175,7 +175,7 @@ import enum Result.NoError
             }
         }
 
-        print("iA: \(initialAmount), iV: \(initialValue), bA: \(boundedAngle), value: \(value)")
+        //print("iA: \(initialAmount), iV: \(initialValue), bA: \(boundedAngle), value: \(value)")
     }
 
     // MARK: Value/Angle conversion

@@ -59,6 +59,7 @@
 		376E7C0C20D85E8600D02121 /* DCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E7C0320D85E8600D02121 /* DCTableViewController.swift */; };
 		376E7C0D20D85E8600D02121 /* DCCellDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E7C0420D85E8600D02121 /* DCCellDescription.swift */; };
 		376E7C0E20D85E8600D02121 /* DCExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E7C0520D85E8600D02121 /* DCExceptionHandler.m */; };
+		37A030642273369A00FEFB9B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A030632273369A00FEFB9B /* Helper.swift */; };
 		37A60D692263EC0C00580B41 /* RobotCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A60D682263EC0C00580B41 /* RobotCommands.swift */; };
 		37AB187622629B0A00A45F82 /* QRDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB187522629B0A00A45F82 /* QRDetector.swift */; };
 		37AB187922629C7D00A45F82 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB187822629C7D00A45F82 /* UIViewExtension.swift */; };
@@ -140,6 +141,7 @@
 		376E7C0320D85E8600D02121 /* DCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCTableViewController.swift; sourceTree = "<group>"; };
 		376E7C0420D85E8600D02121 /* DCCellDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCCellDescription.swift; sourceTree = "<group>"; };
 		376E7C0520D85E8600D02121 /* DCExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCExceptionHandler.m; sourceTree = "<group>"; };
+		37A030632273369A00FEFB9B /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		37A60D682263EC0C00580B41 /* RobotCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotCommands.swift; sourceTree = "<group>"; };
 		37AB187522629B0A00A45F82 /* QRDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetector.swift; sourceTree = "<group>"; };
 		37AB187822629C7D00A45F82 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				3755A583223EB11400D5F9F1 /* Arm-Bridging-Header.h */,
 				373F974D20DBA896005B5401 /* ArmError.swift */,
 				3764899E215E752C00EF9CB2 /* Constants.swift */,
+				37A030632273369A00FEFB9B /* Helper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				376E7BF720D8593000D02121 /* Strongify.swift in Sources */,
 				374ED9EB20B97BA500E8C2D7 /* ControlsViewController.swift in Sources */,
 				376E7C0A20D85E8600D02121 /* DCTableViewStructure.swift in Sources */,
+				37A030642273369A00FEFB9B /* Helper.swift in Sources */,
 				37A60D692263EC0C00580B41 /* RobotCommands.swift in Sources */,
 				376E7C0920D85E8600D02121 /* DCHelper.swift in Sources */,
 				374ED9ED20B97BF400E8C2D7 /* ArmTabBarViewController.swift in Sources */,

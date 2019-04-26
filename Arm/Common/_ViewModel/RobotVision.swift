@@ -23,11 +23,14 @@ class RobotVision {
     
     
     init() {
-        
     }
     
     func resetInfoForCube(number: Int) {
         cubesPosition[number] = nil
+    }
+    
+    func isPlaceFree(x: Float, z: Float) -> Bool {
+        return true
     }
     
     func getXAxisForCube(number: Int) -> CGFloat? {
@@ -49,6 +52,21 @@ class RobotVision {
     
     func seekPlayground(cubesPositionUpdate: @escaping (@escaping SimpleBlock) -> Void) {
         
+    }
+    
+    func processQRCode(name: String, bounds: CGRect) {
+        let cubeNames = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"]
+        
+        guard let index = cubeNames.index(of: name) else {
+            return
+        }
+        
+        cubesPosition[index + 1] = getCubePosition(bounds: bounds)
+    }
+    
+    private func getCubePosition(bounds: CGRect) -> Point {
+        // TODO: compute
+        return Point(x: 0, z: 0)
     }
 }
 

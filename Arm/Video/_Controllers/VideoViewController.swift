@@ -25,7 +25,9 @@ class VideoViewController: UIViewController {
         setupMediaPLayer()
         
         testTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { [weak self] _ in
-            self?.lookForCodesInScene()
+            if !RobotState.shared.isInMotion {
+                self?.lookForCodesInScene()
+            }
         })
     }
 
@@ -57,9 +59,11 @@ class VideoViewController: UIViewController {
         UIGraphicsEndImageContext();
         
         if let unwrappedImage = image, let features = QRDetector.detectQRCode(unwrappedImage), !features.isEmpty{
-            for case let row as CIQRCodeFeature in features{
-                print("detected")
-                print(row.messageString ?? "nope")
+            for case let code as CIQRCodeFeature in features{
+                if let name = code.messageString {
+                    print("Detected cube: \(name)")
+                    RobotVision.shared.processQRCode(name: name, bounds: code.bounds )
+                }
             }
         }
         

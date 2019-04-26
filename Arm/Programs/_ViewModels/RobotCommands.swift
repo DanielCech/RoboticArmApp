@@ -112,26 +112,28 @@ typealias SimpleBlock = () -> Void
         
         print("isPlaceFree \(axisX), \(axisZ)")
         
-        return false
+        return RobotVision.shared.isPlaceFree(x: axisX, z: axisZ)
     }
     
     static func getXAxisOfCube(_ n: Int) -> Int {
         
         print("getXAxisOfCube \(n)")
         
-        return 1
+        return Int(RobotVision.shared.getXAxisForCube(number: n) ?? -1)
     }
     
     static func getZAxisOfCube(_ n: Int) -> Int {
         
         print("getZAxisOfCube \(n)")
         
-        return 2
+        return Int(RobotVision.shared.getZAxisForCube(number: n) ?? -1)
     }
     
     static func resetCubePosition(_ cube: Int) {
         
         print("resetCubePosition \(cube)")
+        
+        RobotVision.shared.resetInfoForCube(number: cube)
         
     }
 }
