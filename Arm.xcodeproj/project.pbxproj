@@ -20,6 +20,7 @@
 		374ED9EB20B97BA500E8C2D7 /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374ED9E920B97AD900E8C2D7 /* ControlsViewController.swift */; };
 		374ED9ED20B97BF400E8C2D7 /* ArmTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374ED9EC20B97BF400E8C2D7 /* ArmTabBarViewController.swift */; };
 		3752F3A720CDE31200E93834 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752F3A620CDE31200E93834 /* ConnectionManager.swift */; };
+		37574C212283358800518C49 /* UIAlertViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37574C202283358800518C49 /* UIAlertViewControllerExtension.swift */; };
 		3764678B225F1F120069F45B /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37646782225F1F110069F45B /* FileHelper.swift */; };
 		3764678C225F1F120069F45B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37646783225F1F110069F45B /* AudioPlayer.swift */; };
 		3764678D225F1F120069F45B /* ProgramsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37646784225F1F110069F45B /* ProgramsViewController.swift */; };
@@ -102,6 +103,7 @@
 		3755A581223EA06E00D5F9F1 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		3755A583223EB11400D5F9F1 /* Arm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Arm-Bridging-Header.h"; sourceTree = "<group>"; };
 		3755A584223EB1C200D5F9F1 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = Pods/MobileVLCKit/MobileVLCKit.framework; sourceTree = "<group>"; };
+		37574C202283358800518C49 /* UIAlertViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertViewControllerExtension.swift; sourceTree = "<group>"; };
 		37646782225F1F110069F45B /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		37646783225F1F110069F45B /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		37646784225F1F110069F45B /* ProgramsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramsViewController.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				37AB187822629C7D00A45F82 /* UIViewExtension.swift */,
+				37574C202283358800518C49 /* UIAlertViewControllerExtension.swift */,
 			);
 			path = _Extensions;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				373F974F20DBAA37005B5401 /* RoboticArm.swift in Sources */,
 				3752F3A720CDE31200E93834 /* ConnectionManager.swift in Sources */,
 				376E7C0E20D85E8600D02121 /* DCExceptionHandler.m in Sources */,
+				37574C212283358800518C49 /* UIAlertViewControllerExtension.swift in Sources */,
 				3764678D225F1F120069F45B /* ProgramsViewController.swift in Sources */,
 				37646793225F1F130069F45B /* CodeRunner.swift in Sources */,
 				376E7C0B20D85E8600D02121 /* DCTableViewCellProtocol.swift in Sources */,

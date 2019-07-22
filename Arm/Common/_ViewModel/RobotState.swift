@@ -13,10 +13,10 @@ import ReactiveCocoa
 class RobotState {
     static let shared = RobotState()
     
-    var valueX = MutableProperty<Float>(0)
-    var valueY = MutableProperty<Float>(0)
-    var valueZ = MutableProperty<Float>(0)
-    var valueAngle = MutableProperty<Float>(0)
+    var valueX = MutableProperty<Float>(Constants.initialX)
+    var valueY = MutableProperty<Float>(Constants.initialY)
+    var valueZ = MutableProperty<Float>(Constants.initialZ)
+    var valueAngle = MutableProperty<Float>(Constants.initialAngle)
     var valuePump = MutableProperty<Bool>(false)
     var immediately = false
     
@@ -37,10 +37,12 @@ class RobotState {
     func moveTo(x: Float, y: Float, z: Float, time: Float, completion: @escaping SimpleBlock) {
         
         if time < 0.2 {
+            UIAlertController.show(title: "Error", message: "Time is too small.")
             completion()
             return
         }
         
+        immediately = true
         isInMotion = true
         
         let originalX = valueX.value
@@ -70,10 +72,12 @@ class RobotState {
     func setAngle(alpha: Float, time: Float, completion: @escaping SimpleBlock) {
         
         if time < 0.2 {
+            UIAlertController.show(title: "Error", message: "Time is too small.")
             completion()
             return
         }
         
+        immediately = true
         isInMotion = true
         
         let originalAngle = valueAngle.value
@@ -98,10 +102,12 @@ class RobotState {
     func circularMovement(radius: Float, time: Float, completion: @escaping SimpleBlock) {
         
         if time < 0.2 {
+            UIAlertController.show(title: "Error", message: "Time is too small.")
             completion()
             return
         }
         
+        immediately = true
         isInMotion = true
         
         let originalX = self.valueX.value
