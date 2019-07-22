@@ -80,12 +80,14 @@ class ControlsViewController: UIViewController {
         }
         
         _knobY.valueSignal.observeValues { [weak self] value in
+//            let updatedValue = value * 200/180.0
             self?._labelY.text = "Y:\n\(Int(value))"
             RobotState.shared.valueY.value = value
             RobotState.shared.immediately = false
         }
         
         _knobZ.valueSignal.observeValues { [weak self] value in
+//            let updatedValue = value * 200/180.0
             self?._labelZ.text = "Z:\n\(Int(value))"
             RobotState.shared.valueZ.value = value
             RobotState.shared.immediately = false

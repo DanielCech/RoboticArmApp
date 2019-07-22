@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
     static let initialX: Float = 90
-    static let initialY: Float = 11
+    static let initialY: Float = 50
     static let initialZ: Float = 0
     static let initialAngle: Float = 90
     
