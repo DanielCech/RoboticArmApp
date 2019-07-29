@@ -13,9 +13,9 @@ import CoreBluetooth
 
 
 public protocol RoboticArmDelegate: class {
-    func opkixDeviceReady(device: RoboticArm)
-    func opkixDeviceUpdated(device: RoboticArm)
-    func opkixDeviceFailed(device: RoboticArm, error: ArmError)
+    func deviceReady(device: RoboticArm)
+    func deviceUpdated(device: RoboticArm)
+    func deviceFailed(device: RoboticArm, error: ArmError)
 
 }
 
@@ -34,7 +34,7 @@ public class RoboticArm: NSObject {
 //    public internal(set) var advertisingInfo: OpkixAdvertisingInfo
     public internal(set) var rssi: Int
     public var name: String {
-        return peripheral?.name ?? "Opkix"
+        return peripheral?.name ?? "RoboticArmApp"
     }
     
     
@@ -89,14 +89,14 @@ public class RoboticArm: NSObject {
     func didDisconnect(error: Error?) {
         if let unwrappedError = error {
             DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-                strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .deviceDisconnectError(unwrappedError))
+                strongSelf.delegate?.deviceFailed(device: strongSelf, error: .deviceDisconnectError(unwrappedError))
             })
         }
     }
     
     func didFailToConnect(error: Error) {
         DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-            strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .deviceConnectError(error))
+            strongSelf.delegate?.deviceFailed(device: strongSelf, error: .deviceConnectError(error))
         })
     }
     
@@ -131,7 +131,7 @@ extension RoboticArm: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard let services = peripheral.services, error == nil else {
             DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-                strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .serviceDiscoveryError(error!))
+                strongSelf.delegate?.deviceFailed(device: strongSelf, error: .serviceDiscoveryError(error!))
             })
             return
         }
@@ -144,7 +144,7 @@ extension RoboticArm: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let chars = service.characteristics, error == nil else {
             DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-                strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .characteristicDiscoveryError(error!))
+                strongSelf.delegate?.deviceFailed(device: strongSelf, error: .characteristicDiscoveryError(error!))
             })
             return
         }
@@ -168,7 +168,7 @@ extension RoboticArm: CBPeripheralDelegate {
         }
 
         DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-            strongSelf.delegate?.opkixDeviceReady(device: strongSelf)
+            strongSelf.delegate?.deviceReady(device: strongSelf)
         })
     }
     
@@ -184,7 +184,7 @@ extension RoboticArm: CBPeripheralDelegate {
 
         // TODO : this is a bit hacky. Not every update means device got changed. Maybe introduce return type from update and check it
         DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-            strongSelf.delegate?.opkixDeviceUpdated(device: strongSelf)
+            strongSelf.delegate?.deviceUpdated(device: strongSelf)
         })
     }
 

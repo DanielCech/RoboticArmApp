@@ -148,7 +148,7 @@ extension ConnectionManager: CBCentralManagerDelegate {
 //            })
 //        }
 //        else {
-//            debugPrint("Got opkix with name \(peripheral.name ?? "-") info \(advInfo)")
+//            debugPrint("Got device with name \(peripheral.name ?? "-") info \(advInfo)")
 //
 //            let device = Device(manager: self, peripheral: peripheral, queue: queue)
 //            let egg = Egg(device: device, rssi: RSSI.intValue, advertisingInfo: advInfo)
