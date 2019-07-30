@@ -8,12 +8,19 @@
 
 import Foundation
 
+public enum Command: String {
+    case none = "0"
+    case manual = "1"
+    case move = "2"
+    case circular = "3"
+}
+
+
 struct Constants {
     static let initialX: Float = 90
     static let initialY: Float = 50
     static let initialZ: Float = 0
     static let initialAngle: Float = 90
-    
 }
 
 

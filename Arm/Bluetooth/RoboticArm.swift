@@ -188,10 +188,10 @@ extension RoboticArm: CBPeripheralDelegate {
         })
     }
 
-    public func control(x: Float, y: Float, z: Float, angle: Float, pump: Bool, immmediately: Bool, controlServos: Bool = false) {
+    public func control(command: Command, x: Float, y: Float, z: Float, angle: Float, pump: Bool) {
         guard let controlCharacteristic = _controlCharacteristic else { return }
 
-        let hexString = String(format: "%04x%04x%04x%04x%01x%01x%01x", Int(x*10), Int(y*10), Int(z*10), Int(angle*10), pump, immmediately, controlServos)
+        let hexString = String(format: "%@%04x%04x%04x%04x%01x", command.rawValue, Int(x*10), Int(y*10), Int(z*10), Int(angle*10), pump)
 
         let data = hexString.data(using: .ascii)
         peripheral?.writeValue(data!, for: controlCharacteristic, type: .withResponse)

@@ -18,7 +18,7 @@ class RobotState {
     var valueZ = MutableProperty<Float>(Constants.initialZ)
     var valueAngle = MutableProperty<Float>(Constants.initialAngle)
     var valuePump = MutableProperty<Bool>(false)
-    var immediately = false
+    var command: Command = .none
     
     var isInMotion = false
     
@@ -42,7 +42,6 @@ class RobotState {
             return
         }
         
-        immediately = true
         isInMotion = true
         
         let originalX = valueX.value
@@ -77,7 +76,6 @@ class RobotState {
             return
         }
         
-        immediately = true
         isInMotion = true
         
         let originalAngle = valueAngle.value
@@ -107,7 +105,6 @@ class RobotState {
             return
         }
         
-        immediately = true
         isInMotion = true
         
         let originalX = self.valueX.value
@@ -143,7 +140,7 @@ class RobotState {
     }
     
     private func updateRoboticArm() {
-        ConnectionManager.shared.control(x: valueX.value, y: valueY.value, z: valueZ.value, angle: valueAngle.value, pump: valuePump.value, immediately: immediately)
+        ConnectionManager.shared.control(command: command, x: valueX.value, y: valueY.value, z: valueZ.value, angle: valueAngle.value, pump: valuePump.value)
     }
     
     
