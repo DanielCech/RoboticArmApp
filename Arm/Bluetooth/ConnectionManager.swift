@@ -86,7 +86,12 @@ internal class ConnectionManager: NSObject {
     }
     
     public func checkFinish() {
-        _roboticArmDevice?.checkFinish()
+        delay(0.5) { [weak self] in
+            if RobotState.shared.movementCompletion != nil {
+                self?._roboticArmDevice?.checkFinish()
+                self?.checkFinish()
+            }
+        }
     }
 }
 
@@ -138,30 +143,6 @@ extension ConnectionManager: CBCentralManagerDelegate {
         }
 
 
-        _roboticArmDevice = RoboticArm(manager: self, peripheral: peripheral, rssi: 0, queue: queue)
-
-//        guard let manufacturerData = advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data, let advInfo = AdvertisingInfo.from(data: manufacturerData) else {
-//            return
-//        }
-//        
-//        if let egg = seenEggs[peripheral.identifier] {
-//            egg.advertisingInfo = advInfo
-//            egg.rssi = RSSI.intValue
-//            DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-//                strongSelf.delegate?.ConnectionManagerUpdatedEggs(manager: strongSelf)
-//            })
-//        }
-//        else {
-//            debugPrint("Got device with name \(peripheral.name ?? "-") info \(advInfo)")
-//
-//            let device = Device(manager: self, peripheral: peripheral, queue: queue)
-//            let egg = Egg(device: device, rssi: RSSI.intValue, advertisingInfo: advInfo)
-//            seenEggs[peripheral.identifier] = egg
-//
-//            DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-//                strongSelf.delegate?.ConnectionManagerDetectedEgg(manager: strongSelf, newEgg: egg)
-//            })
-//        }
-        
+        _roboticArmDevice = RoboticArm(manager: self, peripheral: peripheral, rssi: 0, queue: queue)        
     }
 }

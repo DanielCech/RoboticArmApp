@@ -46,26 +46,7 @@ public class RoboticArm: NSObject {
         super.init()
 
         peripheral?.delegate = self
-        
-//        add(handler: BatteryHandler())
-//        add(handler: DeviceInfoHandler())
-//        add(handler: TimeHandler())
-//        add(handler: LidHandler())
-//        add(handler: WifiSSIDHandler())
-//        add(handler: WifiPasswordHandler())
     }
-    
-//    func add(handler: OpkixCharHandler) {
-//        for pair in handler.handledChars {
-//            handlersMap[pair] = handler
-//        }
-//    }
-//
-//    // returns handler with specified type
-//    func handler<T: OpkixCharHandler>(for handlerType: T.Type) -> T? {
-//        return handlersMap.values.first { $0 is T } as? T
-//    }
-
     
     public func connect() {
         guard let peripheral = self.peripheral else { return }
@@ -147,15 +128,6 @@ extension RoboticArm: CBPeripheralDelegate {
             })
             return
         }
-        
-//        for char in chars {
-//            if let handler = handlersMap[char.uuidPair] {
-//                handler.discover(device: self, char: char)
-//            } else {
-//                debugPrint("Discovered unhandled characteristic")
-//            }
-//        }
-
 
         for characteristic in chars {
             if characteristic.uuid == CBUUID(string: "326a9001-85cb-9195-d9dd-464cfbbae75a") {
@@ -171,19 +143,12 @@ extension RoboticArm: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         print(characteristic)
         
-        let string = String(data: characteristic.value!, encoding: .utf8)
-        print(string)
-//        guard let handler = handlersMap[characteristic.uuidPair] else {
-//            debugPrint("Updated unhandled characteristic \(characteristic.uuidPair)  \(characteristic)")
-//            return
-//        }
-
-//        handler.update(device: self, char: characteristic)
-
-        // TODO : this is a bit hacky. Not every update means device got changed. Maybe introduce return type from update and check it
-        DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-            strongSelf.delegate?.deviceUpdated(device: strongSelf)
-        })
+        if let stringValue = String(data: characteristic.value!, encoding: .utf8), stringValue == "Finished" {
+//            RobotState.shared.movementCompletionTimer?.invalidate()
+//            RobotState.shared.movementCompletionTimer = nil
+            RobotState.shared.movementCompletion?()
+            RobotState.shared.movementCompletion = nil
+        }
     }
 
     public func control(command: Command, x: Float, y: Float, z: Float, angle: Float, pump: Bool) {

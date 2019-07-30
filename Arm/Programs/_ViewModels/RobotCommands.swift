@@ -80,17 +80,12 @@ typealias SimpleBlock = () -> Void
         
         runSynchronously { completion in
             RobotState.shared.command = .move
+            RobotState.shared.movementCompletion = completion
             RobotState.shared.valueX.value = axisX
             RobotState.shared.valueY.value = axisY
             RobotState.shared.valueZ.value = axisZ
             
-            delay(10) {
-                ConnectionManager.shared.checkFinish()
-            }
-            
-//            RobotState.shared.moveTo(x: axisX, y: axisY, z: axisZ, time: time, completion: {
-//                completion()
-//            })
+            ConnectionManager.shared.checkFinish()
         }
     }
     
