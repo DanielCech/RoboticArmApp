@@ -84,6 +84,10 @@ internal class ConnectionManager: NSObject {
         print(String(format: "command: %@, x: %.1f, y: %.1f, z: %.1f, angle: %.1f, pump: %d", command.rawValue, x, y, z, angle, pump))
         _roboticArmDevice?.control(command: command, x: x, y: y, z: z, angle: angle, pump: pump)
     }
+    
+    public func checkFinish() {
+        _roboticArmDevice?.checkFinish()
+    }
 }
 
 

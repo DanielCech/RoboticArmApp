@@ -60,7 +60,7 @@ typealias SimpleBlock = () -> Void
         
         print("enablePump \(enable)")
         
-        RobotState.shared.enablePump(enable: enable)
+        //RobotState.shared.enablePump(enable: enable)
     }
     
     static func pause(_ seconds: Float) {
@@ -79,9 +79,18 @@ typealias SimpleBlock = () -> Void
         print("move \(axisX), \(axisY), \(axisZ), \(time)")
         
         runSynchronously { completion in
-            RobotState.shared.moveTo(x: axisX, y: axisY, z: axisZ, time: time, completion: {
-                completion()
-            })
+            RobotState.shared.command = .move
+            RobotState.shared.valueX.value = axisX
+            RobotState.shared.valueY.value = axisY
+            RobotState.shared.valueZ.value = axisZ
+            
+            delay(10) {
+                ConnectionManager.shared.checkFinish()
+            }
+            
+//            RobotState.shared.moveTo(x: axisX, y: axisY, z: axisZ, time: time, completion: {
+//                completion()
+//            })
         }
     }
     
@@ -90,9 +99,9 @@ typealias SimpleBlock = () -> Void
         print("setAngle \(alpha), \(time)")
         
         runSynchronously { completion in
-            RobotState.shared.setAngle(alpha: alpha, time: time, completion: {
-                completion()
-            })
+//            RobotState.shared.setAngle(alpha: alpha, time: time, completion: {
+//                completion()
+//            })
         }
     
     }
@@ -102,9 +111,9 @@ typealias SimpleBlock = () -> Void
         print("circularMovement \(radius), \(time)")
         
         runSynchronously { completion in
-            RobotState.shared.circularMovement(radius: radius, time: time, completion: {
-                completion()
-            })
+//            RobotState.shared.circularMovement(radius: radius, time: time, completion: {
+//                completion()
+//            })
         }
         
     }

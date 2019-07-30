@@ -28,7 +28,6 @@ public class RoboticArm: NSObject {
     private let queue: DispatchQueue
 
     private var _controlCharacteristic: CBCharacteristic?
-    private var _programCharacteristic: CBCharacteristic?
     
     public weak var delegate: RoboticArmDelegate?
 //    public internal(set) var advertisingInfo: OpkixAdvertisingInfo
@@ -162,9 +161,6 @@ extension RoboticArm: CBPeripheralDelegate {
             if characteristic.uuid == CBUUID(string: "326a9001-85cb-9195-d9dd-464cfbbae75a") {
                 _controlCharacteristic = characteristic
             }
-            else if characteristic.uuid == CBUUID(string: "326a9006-85cb-9195-d9dd-464cfbbae75a") {
-                _programCharacteristic = characteristic
-            }
         }
 
         DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
@@ -175,6 +171,8 @@ extension RoboticArm: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         print(characteristic)
         
+        let string = String(data: characteristic.value!, encoding: .utf8)
+        print(string)
 //        guard let handler = handlersMap[characteristic.uuidPair] else {
 //            debugPrint("Updated unhandled characteristic \(characteristic.uuidPair)  \(characteristic)")
 //            return
@@ -195,6 +193,11 @@ extension RoboticArm: CBPeripheralDelegate {
 
         let data = hexString.data(using: .ascii)
         peripheral?.writeValue(data!, for: controlCharacteristic, type: .withResponse)
+    }
+    
+    public func checkFinish() {
+        guard let controlCharacteristic = _controlCharacteristic else { return }
+        peripheral?.readValue(for: controlCharacteristic)
     }
     
 }
