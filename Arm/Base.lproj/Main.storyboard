@@ -205,41 +205,6 @@
             </objects>
             <point key="canvasLocation" x="1568.8" y="196.55172413793105"/>
         </scene>
-        <!--Programs-->
-        <scene sceneID="cfI-xp-PGp">
-            <objects>
-                <viewController id="xt9-NL-eUQ" customClass="ProgramsViewController" customModule="Arm" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EtZ-gk-ZiH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SVt-Bj-aBL">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="xt9-NL-eUQ" id="QZz-af-Pj9"/>
-                                    <outlet property="delegate" destination="xt9-NL-eUQ" id="GaK-hW-c2Y"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="JV5-R9-lD1" firstAttribute="bottom" secondItem="SVt-Bj-aBL" secondAttribute="bottom" id="Hqu-Jx-hmc"/>
-                            <constraint firstItem="JV5-R9-lD1" firstAttribute="trailing" secondItem="SVt-Bj-aBL" secondAttribute="trailing" id="X8w-5r-NQ3"/>
-                            <constraint firstItem="SVt-Bj-aBL" firstAttribute="leading" secondItem="JV5-R9-lD1" secondAttribute="leading" id="dxc-G5-5I6"/>
-                            <constraint firstItem="SVt-Bj-aBL" firstAttribute="top" secondItem="JV5-R9-lD1" secondAttribute="top" id="mJW-eE-11z"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="JV5-R9-lD1"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Programs" id="kbB-ZT-Zbq"/>
-                    <connections>
-                        <outlet property="_tableView" destination="SVt-Bj-aBL" id="qfP-dj-BMe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S5M-lo-vJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1646" y="-1187"/>
-        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="22p-Vn-cqP">
             <objects>

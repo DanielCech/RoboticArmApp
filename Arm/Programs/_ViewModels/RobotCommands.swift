@@ -17,9 +17,9 @@ typealias SimpleBlock = () -> Void
 @objc protocol RobotCommandsJSExports: JSExport {
     static func enablePump(_ enable: Bool)
     static func pause(_ seconds: Float)
-    static func move(_ axisX: Float, _ axisY: Float, _ axisZ: Float, _ time: Float)
-    static func setAngle(_ alpha: Float, _ time: Float)
-    static func circularMovement(_ radius: Float, _ time: Float)
+    static func move(_ axisX: Float, _ axisY: Float, _ axisZ: Float)
+    static func setAngle(_ alpha: Float)
+    static func circularMovement(_ radius: Float)
     static func isPlaceFree(_ axisX: Float, _ axisZ: Float) -> Bool
     static func getXAxisOfCube(_ n: Int) -> Int
     static func getZAxisOfCube(_ n: Int) -> Int
@@ -74,9 +74,9 @@ typealias SimpleBlock = () -> Void
         }
     }
     
-    static func move(_ axisX: Float, _ axisY: Float, _ axisZ: Float, _ time: Float) {
+    static func move(_ axisX: Float, _ axisY: Float, _ axisZ: Float) {
         
-        print("move \(axisX), \(axisY), \(axisZ), \(time)")
+        print("move \(axisX), \(axisY), \(axisZ)")
         
         runSynchronously { completion in
             RobotState.shared.command = .move
@@ -89,21 +89,23 @@ typealias SimpleBlock = () -> Void
         }
     }
     
-    static func setAngle(_ alpha: Float, _ time: Float) {
+    static func setAngle(_ alpha: Float) {
 
-        print("setAngle \(alpha), \(time)")
+        print("setAngle \(alpha)")
         
         runSynchronously { completion in
-//            RobotState.shared.setAngle(alpha: alpha, time: time, completion: {
-//                completion()
-//            })
+            RobotState.shared.command = .move
+            RobotState.shared.movementCompletion = completion
+            RobotState.shared.valueAngle.value = alpha
+            
+            ConnectionManager.shared.checkFinish()
         }
     
     }
     
-    static func circularMovement(_ radius: Float, _ time: Float) {
+    static func circularMovement(_ radius: Float) {
         
-        print("circularMovement \(radius), \(time)")
+        print("circularMovement \(radius)")
         
         runSynchronously { completion in
 //            RobotState.shared.circularMovement(radius: radius, time: time, completion: {
