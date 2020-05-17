@@ -69,7 +69,7 @@
     },
     {
         "type": "move",
-        "message0": "move x: %1 y: %2 z: %3 time: %4",
+        "message0": "move x: %1 y: %2 z: %3",
         "args0": [
             {
                 "type": "input_value",
@@ -85,22 +85,17 @@
                 "type": "input_value",
                 "name": "z",
                 "check": "Number"
-            },
-            {
-                "type": "input_value",
-                "name": "t",
-                "check": "Number"
             }
         ],
         "previousStatement": null,
         "nextStatement": null,
         "colour": 150,
-        "tooltip": "Move robot to [x, y, z] in time t",
+        "tooltip": "Move robot to [x, y, z]",
         "helpUrl": ""
     },
     {
         "type": "move_inline",
-        "message0": "move x: %1 y: %2 z: %3 time: %4",
+        "message0": "move x: %1 y: %2 z: %3",
         "args0": [
             {
                 "type": "field_number",
@@ -116,96 +111,71 @@
                 "type": "field_number",
                 "name": "z",
                 "check": "Number"
-            },
-            {
-                "type": "field_number",
-                "name": "t",
-                "check": "Number"
             }
         ],
         "inputsInline": true,
         "previousStatement": null,
         "nextStatement": null,
         "colour": 150,
-        "tooltip": "Move robot to [x, y, z] in time t",
+        "tooltip": "Move robot to [x, y, z]",
         "helpUrl": ""
     },
     {
         "type": "angle",
-        "message0": "set angle: %1 time: %2",
+        "message0": "set angle: %1",
         "args0": [
             {
                 "type": "input_value",
                 "name": "alpha",
-                "check": "Number"
-            },
-            {
-                "type": "input_value",
-                "name": "t",
                 "check": "Number"
             }
         ],
         "previousStatement": null,
         "nextStatement": null,
         "colour": 150,
-        "tooltip": "Set robot grab angle in time t",
+        "tooltip": "Set robot grab angle",
         "helpUrl": ""
     },
     {
         "type": "angle_inline",
-        "message0": "set angle: %1 time: %2",
+        "message0": "set angle: %1",
         "args0": [
             {
                 "type": "field_number",
                 "name": "alpha",
                 "check": "Number"
-            },
-            {
-                "type": "field_number",
-                "name": "t",
-                "check": "Number"
             }
         ],
         "inputsInline": true,
         "previousStatement": null,
         "nextStatement": null,
         "colour": 150,
-        "tooltip": "Set robot grab angle in time t",
+        "tooltip": "Set robot grab angle",
         "helpUrl": ""
     },
     {
         "type": "circular",
-        "message0": "circular movement radius: %1 time: %2",
+        "message0": "circular movement radius: %1",
         "args0": [
             {
                 "type": "input_value",
                 "name": "radius",
-                "check": "Number"
-            },
-            {
-                "type": "input_value",
-                "name": "t",
                 "check": "Number"
             }
         ],
         "previousStatement": null,
         "nextStatement": null,
         "colour": 150,
-        "tooltip": "Circular movement with radius in time",
+        "tooltip": "Circular movement with radius",
         "helpUrl": ""
     },
     {
         "type": "circular_inline",
-        "message0": "circular movement radius: %1 time: %2",
+        "message0": "circular movement radius: %1",
         "args0": [
             {
                 "type": "field_number",
                 "name": "radius",
-                "check": "Number"
-            },
-            {
-                "type": "field_number",
-                "name": "t",
                 "check": "Number"
             }
         ],
@@ -213,7 +183,7 @@
         "previousStatement": null,
         "nextStatement": null,
         "colour": 150,
-        "tooltip": "Circular movement with radius in time",
+        "tooltip": "Circular movement with radius",
         "helpUrl": ""
     },
     {
