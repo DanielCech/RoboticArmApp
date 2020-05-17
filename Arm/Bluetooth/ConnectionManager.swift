@@ -80,9 +80,18 @@ internal class ConnectionManager: NSObject {
         }
     }
 
-    public func control(x: Float, y: Float, z: Float, angle: Float, pump: Bool, immediately: Bool) {
-        print(String(format: "x: %.1f, y: %.1f, z: %.1f, angle: %.1f, pump: %d, immediately: %@", x, y, z, angle, pump, immediately ? "true" : "false"))
-        _roboticArmDevice?.control(x: x, y: y, z: z, angle: angle, pump: pump, immmediately: immediately)
+    public func control(command: Command, x: Float, y: Float, z: Float, angle: Float, pump: Bool) {
+        print(String(format: "command: %@, x: %.1f, y: %.1f, z: %.1f, angle: %.1f, pump: %d", command.rawValue, x, y, z, angle, pump))
+        _roboticArmDevice?.control(command: command, x: x, y: y, z: z, angle: angle, pump: pump)
+    }
+    
+    public func checkFinish() {
+        delay(0.5) { [weak self] in
+            if RobotState.shared.movementCompletion != nil {
+                self?._roboticArmDevice?.checkFinish()
+                self?.checkFinish()
+            }
+        }
     }
 }
 
@@ -134,30 +143,6 @@ extension ConnectionManager: CBCentralManagerDelegate {
         }
 
 
-        _roboticArmDevice = RoboticArm(manager: self, peripheral: peripheral, rssi: 0, queue: queue)
-
-//        guard let manufacturerData = advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data, let advInfo = AdvertisingInfo.from(data: manufacturerData) else {
-//            return
-//        }
-//        
-//        if let egg = seenEggs[peripheral.identifier] {
-//            egg.advertisingInfo = advInfo
-//            egg.rssi = RSSI.intValue
-//            DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-//                strongSelf.delegate?.ConnectionManagerUpdatedEggs(manager: strongSelf)
-//            })
-//        }
-//        else {
-//            debugPrint("Got opkix with name \(peripheral.name ?? "-") info \(advInfo)")
-//
-//            let device = Device(manager: self, peripheral: peripheral, queue: queue)
-//            let egg = Egg(device: device, rssi: RSSI.intValue, advertisingInfo: advInfo)
-//            seenEggs[peripheral.identifier] = egg
-//
-//            DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-//                strongSelf.delegate?.ConnectionManagerDetectedEgg(manager: strongSelf, newEgg: egg)
-//            })
-//        }
-        
+        _roboticArmDevice = RoboticArm(manager: self, peripheral: peripheral, rssi: 0, queue: queue)        
     }
 }

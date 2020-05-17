@@ -28,8 +28,7 @@ Blockly.JavaScript['move_inline'] = function(block) {
     var value_x = block.getFieldValue('x').replace(",", ".");
     var value_y = block.getFieldValue('y').replace(",", ".");
     var value_z = block.getFieldValue('z').replace(",", ".");
-    var value_t = block.getFieldValue('t').replace(",", ".");
-    var code = 'RobotCommands.move(' + value_x + ', ' + value_y + ', ' + value_z + ', ' + value_t + ');\n';
+    var code = 'RobotCommands.move(' + value_x + ', ' + value_y + ', ' + value_z + ');\n';
     return code;
 };
 
@@ -37,36 +36,31 @@ Blockly.JavaScript['move'] = function(block) {
     var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
     var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
     var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_t = Blockly.JavaScript.valueToCode(block, 't', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = 'RobotCommands.move(' + value_x + ', ' + value_y + ', ' + value_z + ', ' + value_t + ');\n';
+    var code = 'RobotCommands.move(' + value_x + ', ' + value_y + ', ' + value_z + ');\n';
     return code;
 };
 
 Blockly.JavaScript['angle_inline'] = function(block) {
     var value_alpha = block.getFieldValue('alpha').replace(",", ".");
-    var value_t = block.getFieldValue('t').replace(",", ".");
-    var code = 'RobotCommands.setAngle(' + value_alpha + ', ' + value_t + ');\n';
+    var code = 'RobotCommands.setAngle(' + value_alpha + ');\n';
     return code;
 };
 
 Blockly.JavaScript['angle'] = function(block) {
     var value_alpha = Blockly.JavaScript.valueToCode(block, 'alpha', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_t = Blockly.JavaScript.valueToCode(block, 't', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = 'RobotCommands.setAngle(' + value_alpha + ', ' + value_t + ');\n';
+    var code = 'RobotCommands.setAngle(' + value_alpha + ');\n';
     return code;
 };
 
 Blockly.JavaScript['circular_inline'] = function(block) {
     var value_radius = block.getFieldValue('radius').replace(",", ".");
-    var value_t = block.getFieldValue('t').replace(",", ".");
-    var code = 'RobotCommands.circularMovement(' + value_radius + ', ' + value_t + ');\n';
+    var code = 'RobotCommands.circularMovement(' + value_radius + ');\n';
     return code;
 };
 
 Blockly.JavaScript['circular'] = function(block) {
     var value_radius = Blockly.JavaScript.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_t = Blockly.JavaScript.valueToCode(block, 't', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = 'RobotCommands.circularMovement(' + value_radius + ', ' + value_t + ');\n';
+    var code = 'RobotCommands.circularMovement(' + value_radius + ');\n';
     return code;
 };
 

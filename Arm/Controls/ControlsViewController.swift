@@ -75,33 +75,33 @@ class ControlsViewController: UIViewController {
         
         _knobX.valueSignal.observeValues { [weak self] value in
             self?._labelX.text = "X:\n\(Int(value))"
+            RobotState.shared.command = .manual
             RobotState.shared.valueX.value = value
-            RobotState.shared.immediately = false
         }
         
         _knobY.valueSignal.observeValues { [weak self] value in
 //            let updatedValue = value * 200/180.0
             self?._labelY.text = "Y:\n\(Int(value))"
+            RobotState.shared.command = .manual
             RobotState.shared.valueY.value = value
-            RobotState.shared.immediately = false
         }
         
         _knobZ.valueSignal.observeValues { [weak self] value in
 //            let updatedValue = value * 200/180.0
             self?._labelZ.text = "Z:\n\(Int(value))"
+            RobotState.shared.command = .manual
             RobotState.shared.valueZ.value = value
-            RobotState.shared.immediately = false
         }
         
         _knobAngle.valueSignal.observeValues { [weak self] value in
             self?._labelAngle.text = "Angle:\n\(Int(value))"
+            RobotState.shared.command = .manual
             RobotState.shared.valueAngle.value = value
-            RobotState.shared.immediately = false
         }
         
         _pumpSwitch.reactive.isOnValues.signal.observeValues { value in
+            RobotState.shared.command = .manual
             RobotState.shared.valuePump.value = value
-            RobotState.shared.immediately = false
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Icon-Connect")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(ControlsViewController._connect))

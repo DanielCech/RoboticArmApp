@@ -16,9 +16,7 @@ PODS:
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
   - Result (4.1.0)
-  - VersionIcon (0.9.1):
-    - VersionIcon/Core (= 0.9.1)
-  - VersionIcon/Core (0.9.1)
+  - VersionIcon (1.0.0)
 
 DEPENDENCIES:
   - AEXML
@@ -28,10 +26,10 @@ DEPENDENCIES:
   - MobileVLCKit
   - ReactiveCocoa
   - RealmSwift
-  - VersionIcon
+  - VersionIcon (from `https://github.com/DanielCech/VersionIcon.git`, tag `v1.0.0`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AEXML
     - Blockly
     - Crashlytics
@@ -42,7 +40,16 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - Result
-    - VersionIcon
+
+EXTERNAL SOURCES:
+  VersionIcon:
+    :git: https://github.com/DanielCech/VersionIcon.git
+    :tag: v1.0.0
+
+CHECKOUT OPTIONS:
+  VersionIcon:
+    :git: https://github.com/DanielCech/VersionIcon.git
+    :tag: v1.0.0
 
 SPEC CHECKSUMS:
   AEXML: 647fbb051280f3fb38a1a7caa62b0344055a851c
@@ -55,8 +62,8 @@ SPEC CHECKSUMS:
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  VersionIcon: ffa7479722583cc652bd871c58c5a0d9c7941ef1
+  VersionIcon: a0f01401cbcdff2db5fc0045a52bfdb19abe22d7
 
-PODFILE CHECKSUM: 04221cf2dd03e9b8b6eab3a77f637dccc8d5f5f3
+PODFILE CHECKSUM: bb6f9a0ae9b3cf51e71dd44de9bf605e7ad5f62b
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.9.1

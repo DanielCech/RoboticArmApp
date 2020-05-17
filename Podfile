@@ -9,9 +9,9 @@ def global_pods
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'MobileVLCKit'
-  pod 'VersionIcon'
   pod 'AEXML'
   pod 'Blockly'
+  pod 'VersionIcon', :git=>'https://github.com/DanielCech/VersionIcon.git', :tag => 'v1.0.0'
 end
 
 

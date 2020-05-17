@@ -13,9 +13,9 @@ import CoreBluetooth
 
 
 public protocol RoboticArmDelegate: class {
-    func opkixDeviceReady(device: RoboticArm)
-    func opkixDeviceUpdated(device: RoboticArm)
-    func opkixDeviceFailed(device: RoboticArm, error: ArmError)
+    func deviceReady(device: RoboticArm)
+    func deviceUpdated(device: RoboticArm)
+    func deviceFailed(device: RoboticArm, error: ArmError)
 
 }
 
@@ -28,13 +28,12 @@ public class RoboticArm: NSObject {
     private let queue: DispatchQueue
 
     private var _controlCharacteristic: CBCharacteristic?
-    private var _programCharacteristic: CBCharacteristic?
     
     public weak var delegate: RoboticArmDelegate?
 //    public internal(set) var advertisingInfo: OpkixAdvertisingInfo
     public internal(set) var rssi: Int
     public var name: String {
-        return peripheral?.name ?? "Opkix"
+        return peripheral?.name ?? "RoboticArmApp"
     }
     
     
@@ -47,26 +46,7 @@ public class RoboticArm: NSObject {
         super.init()
 
         peripheral?.delegate = self
-        
-//        add(handler: BatteryHandler())
-//        add(handler: DeviceInfoHandler())
-//        add(handler: TimeHandler())
-//        add(handler: LidHandler())
-//        add(handler: WifiSSIDHandler())
-//        add(handler: WifiPasswordHandler())
     }
-    
-//    func add(handler: OpkixCharHandler) {
-//        for pair in handler.handledChars {
-//            handlersMap[pair] = handler
-//        }
-//    }
-//
-//    // returns handler with specified type
-//    func handler<T: OpkixCharHandler>(for handlerType: T.Type) -> T? {
-//        return handlersMap.values.first { $0 is T } as? T
-//    }
-
     
     public func connect() {
         guard let peripheral = self.peripheral else { return }
@@ -89,14 +69,14 @@ public class RoboticArm: NSObject {
     func didDisconnect(error: Error?) {
         if let unwrappedError = error {
             DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-                strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .deviceDisconnectError(unwrappedError))
+                strongSelf.delegate?.deviceFailed(device: strongSelf, error: .deviceDisconnectError(unwrappedError))
             })
         }
     }
     
     func didFailToConnect(error: Error) {
         DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-            strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .deviceConnectError(error))
+            strongSelf.delegate?.deviceFailed(device: strongSelf, error: .deviceConnectError(error))
         })
     }
     
@@ -131,7 +111,7 @@ extension RoboticArm: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard let services = peripheral.services, error == nil else {
             DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-                strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .serviceDiscoveryError(error!))
+                strongSelf.delegate?.deviceFailed(device: strongSelf, error: .serviceDiscoveryError(error!))
             })
             return
         }
@@ -144,57 +124,45 @@ extension RoboticArm: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let chars = service.characteristics, error == nil else {
             DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-                strongSelf.delegate?.opkixDeviceFailed(device: strongSelf, error: .characteristicDiscoveryError(error!))
+                strongSelf.delegate?.deviceFailed(device: strongSelf, error: .characteristicDiscoveryError(error!))
             })
             return
         }
-        
-//        for char in chars {
-//            if let handler = handlersMap[char.uuidPair] {
-//                handler.discover(device: self, char: char)
-//            } else {
-//                debugPrint("Discovered unhandled characteristic")
-//            }
-//        }
-
 
         for characteristic in chars {
             if characteristic.uuid == CBUUID(string: "326a9001-85cb-9195-d9dd-464cfbbae75a") {
                 _controlCharacteristic = characteristic
             }
-            else if characteristic.uuid == CBUUID(string: "326a9006-85cb-9195-d9dd-464cfbbae75a") {
-                _programCharacteristic = characteristic
-            }
         }
 
         DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-            strongSelf.delegate?.opkixDeviceReady(device: strongSelf)
+            strongSelf.delegate?.deviceReady(device: strongSelf)
         })
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         print(characteristic)
         
-//        guard let handler = handlersMap[characteristic.uuidPair] else {
-//            debugPrint("Updated unhandled characteristic \(characteristic.uuidPair)  \(characteristic)")
-//            return
-//        }
-
-//        handler.update(device: self, char: characteristic)
-
-        // TODO : this is a bit hacky. Not every update means device got changed. Maybe introduce return type from update and check it
-        DispatchQueue.main.async(execute: strongify(weak: self) { strongSelf in
-            strongSelf.delegate?.opkixDeviceUpdated(device: strongSelf)
-        })
+        if let stringValue = String(data: characteristic.value!, encoding: .utf8), stringValue == "Finished" {
+//            RobotState.shared.movementCompletionTimer?.invalidate()
+//            RobotState.shared.movementCompletionTimer = nil
+            RobotState.shared.movementCompletion?()
+            RobotState.shared.movementCompletion = nil
+        }
     }
 
-    public func control(x: Float, y: Float, z: Float, angle: Float, pump: Bool, immmediately: Bool, controlServos: Bool = false) {
+    public func control(command: Command, x: Float, y: Float, z: Float, angle: Float, pump: Bool) {
         guard let controlCharacteristic = _controlCharacteristic else { return }
 
-        let hexString = String(format: "%04x%04x%04x%04x%01x%01x%01x", Int(x*10), Int(y*10), Int(z*10), Int(angle*10), pump, immmediately, controlServos)
+        let hexString = String(format: "%@%04x%04x%04x%04x%01x", command.rawValue, Int(x*10), Int(y*10), Int(z*10), Int(angle*10), pump)
 
         let data = hexString.data(using: .ascii)
         peripheral?.writeValue(data!, for: controlCharacteristic, type: .withResponse)
+    }
+    
+    public func checkFinish() {
+        guard let controlCharacteristic = _controlCharacteristic else { return }
+        peripheral?.readValue(for: controlCharacteristic)
     }
     
 }
