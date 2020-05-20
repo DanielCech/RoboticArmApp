@@ -11,7 +11,7 @@ def global_pods
   pod 'MobileVLCKit'
   pod 'AEXML'
   pod 'Blockly'
-  pod 'VersionIcon', :git=>'https://github.com/DanielCech/VersionIcon.git', :tag => 'v1.0.0'
+  pod 'VersionIcon', :git=>'https://github.com/DanielCech/VersionIcon.git', :tag => 'v1.0.1'
 end
 
 

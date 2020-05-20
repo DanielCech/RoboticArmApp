@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -489,6 +489,7 @@
 			buildPhases = (
 				29360A60F050FB8AABC0B3AA /* [CP] Check Pods Manifest.lock */,
 				374ED99220B9454D00E8C2D7 /* Sources */,
+				27C077B02471E9FC005936D0 /* VersionIcon */,
 				374ED99320B9454D00E8C2D7 /* Frameworks */,
 				374ED99420B9454D00E8C2D7 /* Resources */,
 				374ED9BC20B946CF00E8C2D7 /* Embed Frameworks */,
@@ -572,6 +573,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		27C077B02471E9FC005936D0 /* VersionIcon */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = VersionIcon;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"Pods/VersionIcon/Bin/VersionIcon\" --resources \"Pods/VersionIcon/Bin\" --original\nelse\n    \"Pods/VersionIcon/Bin/VersionIcon\" --ribbon Red-TopRight.png --title Devel-TopRight.png --resources \"Pods/VersionIcon/Bin\" --strokeWidth 0.07\nfi\n";
+		};
 		29360A60F050FB8AABC0B3AA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
