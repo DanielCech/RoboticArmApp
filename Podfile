@@ -4,14 +4,14 @@ use_frameworks!
 inhibit_all_warnings!
 
 def global_pods
-  pod 'ReactiveCocoa'
-  pod 'RealmSwift'
-  pod 'Fabric'
-  pod 'Crashlytics'
-  pod 'MobileVLCKit'
-  pod 'AEXML'
-  pod 'Blockly'
-  pod 'VersionIcon', :git=>'https://github.com/DanielCech/VersionIcon.git', :tag => 'v1.0.1'
+  pod 'ReactiveCocoa', '8.0.2'
+  pod 'RealmSwift', '3.13.1'
+  pod 'Fabric', '1.9.0'
+  pod 'Crashlytics', '3.12.0'
+  pod 'MobileVLCKit', '3.3.0'
+  pod 'AEXML', '4.1.0'
+  pod 'Blockly', '1.2.2'
+  pod 'VersionIcon', '~> 1.0.1'
 end
 
 

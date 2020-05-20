@@ -589,7 +589,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"Pods/VersionIcon/Bin/VersionIcon\" --resources \"Pods/VersionIcon/Bin\" --original\nelse\n    \"Pods/VersionIcon/Bin/VersionIcon\" --ribbon Red-TopRight.png --title Devel-TopRight.png --resources \"Pods/VersionIcon/Bin\" --strokeWidth 0.07\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"Pods/VersionIcon/Bin/VersionIcon\" --resources \"Pods/VersionIcon/Bin\" --original\nelse\n    \"Pods/VersionIcon/Bin/VersionIcon\" --ribbon Blue-TopRight.png --title Devel-TopRight.png --resources \"Pods/VersionIcon/Bin\" --strokeWidth 0.07\nfi\n";
 		};
 		29360A60F050FB8AABC0B3AA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
